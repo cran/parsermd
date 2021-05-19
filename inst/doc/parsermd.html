@@ -194,13 +194,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Setup   &lt;NA&gt;            rmd_chunk     &quot;setup&quot;    &lt;chunk [r]&gt;   </span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Content &lt;NA&gt;            rmd_heading    &lt;NA&gt;      &lt;heading [h1]&gt;</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Content R Markdown      rmd_heading    &lt;NA&gt;      &lt;heading [h2]&gt;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Content R Markdown      rmd_markdown   &lt;NA&gt;      &lt;markdown [6]&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Content R Markdown      rmd_markdown   &lt;NA&gt;      &lt;rmd_mrkd [6]&gt;</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Content R Markdown      rmd_chunk     &quot;cars&quot;     &lt;chunk [r]&gt;   </span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Content R Markdown      rmd_chunk     &quot;&quot;         &lt;chunk [r]&gt;   </span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Content Including Plots rmd_heading    &lt;NA&gt;      &lt;heading [h2]&gt;</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Content Including Plots rmd_markdown   &lt;NA&gt;      &lt;markdown [2]&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Content Including Plots rmd_markdown   &lt;NA&gt;      &lt;rmd_mrkd [2]&gt;</span></span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Content Including Plots rmd_chunk     &quot;pressure&quot; &lt;chunk [r]&gt;   </span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 Content Including Plots rmd_markdown   &lt;NA&gt;      &lt;markdown [2]&gt;</span></span></code></pre></div>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 Content Including Plots rmd_markdown   &lt;NA&gt;      &lt;rmd_mrkd [2]&gt;</span></span></code></pre></div>
 <p>and it is possible to convert from these data frames back into an <code>rmd_ast</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as_ast</span>( <span class="fu">as_tibble</span>(rmd) )</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── YAML [4 lines]</span></span>
@@ -359,18 +359,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Load packages &lt;NA&gt;     rmd_heading   &lt;NA&gt;          &lt;heading [h3]&gt;</span></span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Load packages &lt;NA&gt;     rmd_chunk     load-packages &lt;chunk [r]&gt;   </span></span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Exercise 1    &lt;NA&gt;     rmd_heading   &lt;NA&gt;          &lt;heading [h3]&gt;</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Exercise 1    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Exercise 1    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;</span></span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Exercise 1    Solution rmd_heading   &lt;NA&gt;          &lt;heading [h4]&gt;</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Exercise 1    Solution rmd_markdown  &lt;NA&gt;          &lt;markdown [5]&gt;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Exercise 1    Solution rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [5]&gt;</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Exercise 2    &lt;NA&gt;     rmd_heading   &lt;NA&gt;          &lt;heading [h3]&gt;</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Exercise 2    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Exercise 2    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;</span></span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Exercise 2    Solution rmd_heading   &lt;NA&gt;          &lt;heading [h4]&gt;</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Exercise 2    Solution rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Exercise 2    Solution rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;</span></span>
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 Exercise 2    Solution rmd_chunk     plot-dino     &lt;chunk [r]&gt;   </span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 Exercise 2    Solution rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 Exercise 2    Solution rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;</span></span>
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 Exercise 2    Solution rmd_chunk     cor-dino      &lt;chunk [r]&gt;   </span></span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 Exercise 3    &lt;NA&gt;     rmd_heading   &lt;NA&gt;          &lt;heading [h3]&gt;</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 Exercise 3    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 Exercise 3    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;</span></span>
 <span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 Exercise 3    Solution rmd_heading   &lt;NA&gt;          &lt;heading [h4]&gt;</span></span>
 <span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 Exercise 3    Solution rmd_chunk     plot-star     &lt;chunk [r]&gt;   </span></span>
 <span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 Exercise 3    Solution rmd_chunk     cor-star      &lt;chunk [r]&gt;</span></span></code></pre></div>
@@ -381,12 +381,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;     &lt;rmd_ast&gt;     </span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 Exercise 1 &lt;NA&gt;     rmd_heading  &lt;NA&gt;      &lt;heading [h3]&gt;</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Exercise 1 Solution rmd_heading  &lt;NA&gt;      &lt;heading [h4]&gt;</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Exercise 1 Solution rmd_markdown &lt;NA&gt;      &lt;markdown [5]&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Exercise 1 Solution rmd_markdown &lt;NA&gt;      &lt;rmd_mrkd [5]&gt;</span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Exercise 2 &lt;NA&gt;     rmd_heading  &lt;NA&gt;      &lt;heading [h3]&gt;</span></span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Exercise 2 Solution rmd_heading  &lt;NA&gt;      &lt;heading [h4]&gt;</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;markdown [2]&gt;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;rmd_mrkd [2]&gt;</span></span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Exercise 2 Solution rmd_chunk    plot-dino &lt;chunk [r]&gt;   </span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;markdown [2]&gt;</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;rmd_mrkd [2]&gt;</span></span>
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Exercise 2 Solution rmd_chunk    cor-dino  &lt;chunk [r]&gt;   </span></span>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Exercise 3 &lt;NA&gt;     rmd_heading  &lt;NA&gt;      &lt;heading [h3]&gt;</span></span>
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Exercise 3 Solution rmd_heading  &lt;NA&gt;      &lt;heading [h4]&gt;</span></span>
@@ -404,18 +404,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Load packages &lt;NA&gt;     rmd_heading   &lt;NA&gt;          &lt;heading [h3]&gt;    NA</span></span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Load packages &lt;NA&gt;     rmd_chunk     load-packages &lt;chunk [r]&gt;        2</span></span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Exercise 1    &lt;NA&gt;     rmd_heading   &lt;NA&gt;          &lt;heading [h3]&gt;    NA</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Exercise 1    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;     2</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Exercise 1    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;     2</span></span>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Exercise 1    Solution rmd_heading   &lt;NA&gt;          &lt;heading [h4]&gt;    NA</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Exercise 1    Solution rmd_markdown  &lt;NA&gt;          &lt;markdown [5]&gt;     5</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Exercise 1    Solution rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [5]&gt;     5</span></span>
 <span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Exercise 2    &lt;NA&gt;     rmd_heading   &lt;NA&gt;          &lt;heading [h3]&gt;    NA</span></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Exercise 2    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;     2</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Exercise 2    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;     2</span></span>
 <span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Exercise 2    Solution rmd_heading   &lt;NA&gt;          &lt;heading [h4]&gt;    NA</span></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Exercise 2    Solution rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;     2</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 Exercise 2    Solution rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;     2</span></span>
 <span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 Exercise 2    Solution rmd_chunk     plot-dino     &lt;chunk [r]&gt;        5</span></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 Exercise 2    Solution rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;     2</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 Exercise 2    Solution rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;     2</span></span>
 <span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 Exercise 2    Solution rmd_chunk     cor-dino      &lt;chunk [r]&gt;        2</span></span>
 <span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 Exercise 3    &lt;NA&gt;     rmd_heading   &lt;NA&gt;          &lt;heading [h3]&gt;    NA</span></span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 Exercise 3    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;markdown [2]&gt;     2</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 Exercise 3    &lt;NA&gt;     rmd_markdown  &lt;NA&gt;          &lt;rmd_mrkd [2]&gt;     2</span></span>
 <span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 Exercise 3    Solution rmd_heading   &lt;NA&gt;          &lt;heading [h4]&gt;    NA</span></span>
 <span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 Exercise 3    Solution rmd_chunk     plot-star     &lt;chunk [r]&gt;        5</span></span>
 <span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 Exercise 3    Solution rmd_chunk     cor-star      &lt;chunk [r]&gt;        2</span></span></code></pre></div>
@@ -426,9 +426,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;     &lt;rmd_ast&gt;      &lt;int&gt;</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Exercise 2 &lt;NA&gt;     rmd_heading  &lt;NA&gt;      &lt;heading [h3]&gt;    NA</span></span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Exercise 2 Solution rmd_heading  &lt;NA&gt;      &lt;heading [h4]&gt;    NA</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;markdown [2]&gt;     2</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;rmd_mrkd [2]&gt;     2</span></span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Exercise 2 Solution rmd_chunk    plot-dino &lt;chunk [r]&gt;        5</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;markdown [2]&gt;     2</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;rmd_mrkd [2]&gt;     2</span></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 Exercise 2 Solution rmd_chunk    cor-dino  &lt;chunk [r]&gt;        2</span></span></code></pre></div>
 <p>and see that our new <code>lines</code> column is maintained.</p>
 <p>Note that using the <code>rmd_select</code> function is optional here and we can also accomplish the same task using <code>dplyr::filter</code> or any similar approach</p>
@@ -438,9 +438,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   sec_h3     sec_h4   type         label     ast            lines</span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;     &lt;rmd_ast&gt;      &lt;int&gt;</span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 Exercise 2 Solution rmd_heading  &lt;NA&gt;      &lt;heading [h4]&gt;    NA</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;markdown [2]&gt;     2</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;rmd_mrkd [2]&gt;     2</span></span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 Exercise 2 Solution rmd_chunk    plot-dino &lt;chunk [r]&gt;        5</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;markdown [2]&gt;     2</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 Exercise 2 Solution rmd_markdown &lt;NA&gt;      &lt;rmd_mrkd [2]&gt;     2</span></span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 Exercise 2 Solution rmd_chunk    cor-dino  &lt;chunk [r]&gt;        2</span></span></code></pre></div>
 <p>As such, it is possible to mix and match between <code>parsermd</code>’s built-in functions and any of your other preferred data manipulation packages.</p>
 <p>One small note of caution is that when converting back to an ast, <code>as_ast</code>, or document, <code>as_document</code>, only the structure of the <code>ast</code> column matters so changes made to the section columns, <code>type</code> column, or the <code>label</code> column will not affect the output in any way. This is particularly important when headings are filtered out, as their columns may still appear in the tibble while they are no longer in the ast - <code>rmd_select</code> attempts to avoid this by recalculating these specific columns as part of the subsetting process.</p>
