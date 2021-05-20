@@ -1,7 +1,7 @@
-8efda28572b6850044d4d9847bb95786 *DESCRIPTION
+ddd9275952c0aed08f2729702bbf0c51 *DESCRIPTION
 6fafc2f978c113c9876dbdc2f7351dba *LICENSE
 fb241d38dca1b5b272c4479716ff310f *NAMESPACE
-b2483de60fb7f7d3cc487137a958db79 *NEWS.md
+165ccb71c221ef78edd0a9dd200b5a68 *NEWS.md
 2142342457bdd7c041e65304e03215a6 *R/RcppExports.R
 2086a7311e38129ec9f3a475830eac01 *R/as_ast.R
 5a0c7b24c2b70842754e1809d91c9f41 *R/as_document.R
@@ -67,13 +67,13 @@ a08dd2ac32027e95530030a72345e9cc *man/rmd_node.Rd
 5badae62a46de7e4235f4fc6f7f1b0b6 *man/rmd_subset_util.Rd
 a8059805c15604796d3639dbb0176bf3 *man/rmd_template.Rd
 91dfe6839d8e0de735a2a3f0db6598e1 *src/RcppExports.cpp
-4a6fb0a16c3f2dbc4e08e1455e05ead3 *src/parse_chunk.h
+aaa6ef081e28a47c0a2a22e1ca7b673b *src/parse_chunk.h
 24e46a4502265f9a85a719b28d76e30d *src/parse_chunk_ast.h
 f8de1c5cd5faee54cafb91c7819baf8a *src/parse_expr.h
 9a99133bb9838772a6e6d7fae93eb369 *src/parse_option.h
 0b4c5e0ad4552cf098396ab9cb17ab11 *src/parse_option_ast.h
 0a0fac6fa41e4fdf7e897400f864ca11 *src/parse_qstring.h
-6d691a4170a5dbaa52612cdd24a35a58 *src/parse_rmd.h
+6e211a000f1bd9697e87b12a6a14e945 *src/parse_rmd.h
 43e9d01f4c6142f85fc52c678b92fafe *src/parse_rmd_ast.h
 deb5202842f77e3d208d9367f0deb220 *src/parse_yaml.h
 834e653c055a8963e0fcc9e07ba7fecb *src/parser.cpp

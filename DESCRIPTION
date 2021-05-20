@@ -1,6 +1,6 @@
 Package: parsermd
 Title: Formal Parser and Related Tools for R Markdown Documents
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     person(given = "Colin",
            family = "Rundel",
@@ -25,8 +25,8 @@ URL: https://rundel.github.io/parsermd/,
         https://github.com/rundel/parsermd
 BugReports: https://github.com/rundel/parsermd/issues
 NeedsCompilation: yes
-Packaged: 2021-05-19 20:21:37 UTC; rundel
+Packaged: 2021-05-20 10:31:20 UTC; rundel
 Author: Colin Rundel [aut, cre]
 Maintainer: Colin Rundel <rundel@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-05-19 20:40:02 UTC
+Date/Publication: 2021-05-20 15:00:02 UTC
