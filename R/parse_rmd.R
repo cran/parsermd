@@ -32,8 +32,22 @@ parse_rmd = function(rmd, allow_incomplete = FALSE, parse_yaml = TRUE) {
     ast[[1]] = parse_yaml(ast[[1]])
   }
 
+  ast = fix_unnamed_chunks(ast)
   ast
 }
+
+fix_unnamed_chunks = function(ast) {
+  unk_i = 1
+  for(j in seq_along(ast)) {
+    if (inherits(ast[[j]], "rmd_chunk") && ast[[j]][["name"]] == "") {
+      ast[[j]][["name"]] = paste0("unnamed-chunk-", unk_i)
+      unk_i = unk_i + 1
+    }
+  }
+
+  ast
+}
+
 
 
 parse_yaml = function(yaml) {
@@ -42,7 +56,7 @@ parse_yaml = function(yaml) {
   if(length(yaml) == 0)
     yaml = list()
   else
-    yaml = yaml::read_yaml(text = paste(yaml, collapse="\n"))
+    yaml = yaml::yaml.load(string = paste(yaml, collapse="\n"))
 
   class(yaml) = "rmd_yaml_list"
 

@@ -1,3 +1,9 @@
+# parsermd 0.1.3
+
+* Unlabeled chunks will now be labeled as unnamed-chunk-n, with n incrementing.
+
+* Minor fixes and updates to resolve CRAN warnings.
+
 # parsermd 0.1.2
 
 * Fix compilation issues with older GCC versions (e.g. GCC@5 on Solaris)
