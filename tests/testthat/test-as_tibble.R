@@ -1,12 +1,12 @@
 test_that("as_tibble - minimal.Rmd", {
-  ast = parse_rmd(system.file("minimal.Rmd", package = "parsermd"))
+  ast = parse_rmd(system.file("examples/minimal.Rmd", package = "parsermd"))
   tbl = as_tibble(ast)
 
   expect_snapshot_output(tbl)
 
   tbl_expected = tibble::tribble(
     ~sec_h1,             ~sec_h2,           ~type,             ~label,
-    NA,                       NA, "rmd_yaml_list",                 NA,
+    NA,                       NA,      "rmd_yaml",                 NA,
     "Setup",                  NA,   "rmd_heading",                 NA,
     "Setup",                  NA,     "rmd_chunk",            "setup",
     "Content",                NA,   "rmd_heading",                 NA,
@@ -30,14 +30,14 @@ test_that("as_tibble - minimal.Rmd", {
 
 
 test_that("as_tibble - hw01.Rmd", {
-  ast = parse_rmd(system.file("hw01.Rmd", package = "parsermd"))
+  ast = parse_rmd(system.file("examples/hw01.Rmd", package = "parsermd"))
   tbl = as_tibble(ast)
 
   expect_snapshot_output(tbl)
 
   tbl_expected = tibble::tribble(
     ~sec_h3,         ~sec_h4,           ~type,          ~label,
-    NA,                   NA, "rmd_yaml_list",              NA,
+    NA,                   NA,      "rmd_yaml",              NA,
     "Load packages",      NA,   "rmd_heading",              NA,
     "Load packages",      NA,     "rmd_chunk", "load-packages",
     "Exercise 1",         NA,   "rmd_heading",              NA,
@@ -70,14 +70,14 @@ test_that("as_tibble - hw01.Rmd", {
 
 
 test_that("as_tibble - hw01-student.Rmd", {
-  ast = parse_rmd(system.file("hw01-student.Rmd", package = "parsermd"))
+  ast = parse_rmd(system.file("examples/hw01-student.Rmd", package = "parsermd"))
   tbl = as_tibble(ast)
 
   expect_snapshot_output(tbl)
 
   tbl_expected = tibble::tribble(
     ~sec_h3,         ~sec_h4,           ~type,          ~label,
-    NA,                   NA, "rmd_yaml_list",              NA,
+    NA,                   NA,      "rmd_yaml",              NA,
     "Load packages",      NA,   "rmd_heading",              NA,
     "Load packages",      NA,     "rmd_chunk", "load-packages",
     "Exercise 1",         NA,   "rmd_heading",              NA,
@@ -108,14 +108,13 @@ test_that("as_tibble - hw01-student.Rmd", {
 })
 
 test_that("as_tibble - empty_sections.Rmd", {
-  ast = parse_rmd(system.file("empty_sections.Rmd", package = "parsermd"))
+  ast = parse_rmd(system.file("examples/empty_sections.Rmd", package = "parsermd"))
   tbl = as_tibble(ast)
 
   expect_snapshot_output(tbl)
 
   tbl_expected = tibble::tribble(
     ~sec_h1, ~sec_h2,           ~type,        ~label,
-    NA,           NA, "rmd_yaml_list", NA_character_,
     "H1-1",       NA,   "rmd_heading", NA_character_,
     "H1-1",   "H2-1",   "rmd_heading", NA_character_,
     "H1-1",   "H2-2",   "rmd_heading", NA_character_,
@@ -134,15 +133,15 @@ test_that("as_tibble - empty_sections.Rmd", {
 
 
 test_that("as_tibble - reverse_sections.Rmd", {
-  ast = parse_rmd(system.file("reverse_sections.Rmd", package = "parsermd"))
+  ast = parse_rmd(system.file("examples/reverse_sections.Rmd", package = "parsermd"))
   tbl = as_tibble(ast)
 
   expect_snapshot_output(tbl)
 
-  yaml = create_yaml('title: "Reversed Sections"','output: html_document')
+  yaml = rmd_yaml(list(title = "Reversed Sections", output = "html_document"))
   tbl_expected = tibble::tribble(
     ~sec_h1, ~sec_h2,       ~sec_h3,           ~type,        ~label,
-    NA,           NA,            NA, "rmd_yaml_list", NA_character_,
+    NA,           NA,            NA,      "rmd_yaml", NA_character_,
     NA,           NA,          "H3",   "rmd_heading", NA_character_,
     NA,         "H2",            NA,   "rmd_heading", NA_character_,
     NA,         "H2", "H3 - Part 2",   "rmd_heading", NA_character_,

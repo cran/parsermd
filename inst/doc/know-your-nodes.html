@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.20">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Know your nodes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+</style>
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Know your nodes</h1>
+
+</header>
+
+
+<h1 id="introduction">Introduction</h1>
+<p>The parsermd package parses R Markdown and Quarto documents into an Abstract Syntax Tree (AST) representation. This vignette introduces the different types of AST nodes and their properties, helping you understand how parsermd represents document structure.</p>
+<h2 id="ast-container---rmd_ast">AST Container - <code>rmd_ast</code></h2>
+<p>The <code>rmd_ast</code> object serves as the container for all parsed document nodes. It holds a linear sequence of nodes representing different document elements, where each node type corresponds to a specific R Markdown or Quarto construct (headings, code chunks, text, etc.).</p>
+<p><strong>Important</strong>: The AST represents documents as a linear sequence of nodes, not a nested tree structure. This means that structural elements like fenced divs are represented as separate opening and closing nodes in the sequence, rather than as nodes with children.</p>
+<p>The default print method for <code>rmd_ast</code>’s (<code>flat = FALSE</code>) presents an implicit tree structure based on heading levels. This provides a hierarchical view that reflects the document’s logical organization, where content is grouped under headings based on their level.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>nodes</code>: A list containing all the parsed nodes in document order</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text that would be parsed:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Example Document&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>This is some text.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>This would create an <code>rmd_ast</code> object containing:</p>
+<ol type="1">
+<li><code>rmd_yaml</code> node with the title</li>
+<li><code>rmd_heading</code> node with “Introduction”</li>
+<li><code>rmd_markdown</code> node with “This is some text.”</li>
+<li><code>rmd_chunk</code> node with the R code</li>
+</ol>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ast <span class="ot">=</span> <span class="fu">rmd_ast</span>(<span class="fu">list</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_yaml</span>(<span class="fu">list</span>(<span class="at">title =</span> <span class="st">&quot;Example Document&quot;</span>)),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_heading</span>(<span class="at">name =</span> <span class="st">&quot;Introduction&quot;</span>, <span class="at">level =</span> <span class="dv">1</span>L),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_markdown</span>(<span class="at">lines =</span> <span class="st">&quot;This is some text.&quot;</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_chunk</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">engine =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">code =</span> <span class="fu">c</span>(<span class="st">&quot;x &lt;- 1:5&quot;</span>, <span class="st">&quot;mean(x)&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Hierarchical view (<code>flat = FALSE</code>):</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ast, <span class="at">flat =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── YAML [1 field]</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; └── Heading [h1] - Introduction</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ├── Markdown [1 line]</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     └── Chunk [r, 2 lines] -</span></span></code></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Linear view (<code>flat = TRUE</code>):</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ast, <span class="at">flat =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── YAML [1 field]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h1] - Introduction</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Markdown [1 line]</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; └── Chunk [r, 2 lines] -</span></span></code></pre></div>
+</div>
+</div>
+</div>
+<hr>
+<h1 id="s7-class-system">S7 Class System</h1>
+<p>parsermd uses the S7 object system for all AST node types. S7 provides a modern, robust class system with:</p>
+<ul>
+<li><strong>Type safety</strong>: Properties are validated when objects are created or modified</li>
+<li><strong>Performance</strong>: Efficient method dispatch and memory usage</li>
+<li><strong>Consistency</strong>: Uniform interface across all node types</li>
+</ul>
+<p><strong>Key S7 Features in parsermd:</strong></p>
+<ul>
+<li>All node types inherit from the base <code>rmd_node</code> class</li>
+<li>Properties are accessed using <code>@</code> syntax (e.g., <code>node@content</code>)</li>
+<li>Validation ensures data integrity (proper types, lengths, etc.)</li>
+<li>Method dispatch works seamlessly with generic functions</li>
+</ul>
+<p><strong>Property Access:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a heading node</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>heading <span class="ot">=</span> <span class="fu">rmd_heading</span>(<span class="at">name =</span> <span class="st">&quot;Section Title&quot;</span>, <span class="at">level =</span> <span class="dv">2</span>L)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Access properties with @</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>heading<span class="sc">@</span>name</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Section Title&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>heading<span class="sc">@</span>level</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span></code></pre></div>
+</div>
+<hr>
+<h1 id="core-node-types">Core Node Types</h1>
+<h2 id="document-structure-nodes">Document Structure Nodes</h2>
+<h3 id="yaml-header---rmd_yaml">YAML Header - <code>rmd_yaml</code></h3>
+<p>The <code>rmd_yaml</code> node represents YAML front matter at the beginning of documents.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>yaml</code>: List containing the parsed YAML content</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text that would be parsed:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;My Document&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;John Doe&quot;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;2023-01-01&quot;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>yaml_node <span class="ot">=</span> <span class="fu">rmd_yaml</span>(<span class="fu">list</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;My Document&quot;</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">author =</span> <span class="st">&quot;John Doe&quot;</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">date =</span> <span class="st">&quot;2023-01-01&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>yaml_node</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;rmd_yaml&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ yaml:List of 3</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .. $ title : chr &quot;My Document&quot;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .. $ author: chr &quot;John Doe&quot;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .. $ date  : chr &quot;2023-01-01&quot;</span></span></code></pre></div>
+</div>
+<hr>
+<h3 id="markdown-headings---rmd_heading">Markdown Headings - <code>rmd_heading</code></h3>
+<p>The <code>rmd_heading</code> node represents section headings in markdown.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>name</code>: Character string containing the heading text</li>
+<li><code>level</code>: Integer from 1-6 indicating the heading level (# = 1, ## = 2, etc.)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text that would be parsed:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span></code></pre></div>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>heading_node <span class="ot">=</span> <span class="fu">rmd_heading</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&quot;Introduction&quot;</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">level =</span> <span class="dv">1</span>L</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>heading_node</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;rmd_heading&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ name : chr &quot;Introduction&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ level: int 1</span></span></code></pre></div>
+</div>
+<hr>
+<h3 id="markdown-text---rmd_markdown">Markdown Text - <code>rmd_markdown</code></h3>
+<p>The <code>rmd_markdown</code> node represents plain markdown text content.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>lines</code>: Character vector containing the markdown text lines</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text that would be parsed:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>This is a paragraph.</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>With multiple lines.</span></code></pre></div>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>markdown_node <span class="ot">=</span> <span class="fu">rmd_markdown</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">lines =</span> <span class="fu">c</span>(<span class="st">&quot;This is a paragraph.&quot;</span>, <span class="st">&quot;With multiple lines.&quot;</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>markdown_node</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;rmd_markdown&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ lines: chr [1:2] &quot;This is a paragraph.&quot; &quot;With multiple lines.&quot;</span></span></code></pre></div>
+</div>
+<hr>
+<h2 id="code-and-execution-nodes">Code and Execution Nodes</h2>
+<h3 id="executable-code-chunks---rmd_chunk">Executable Code Chunks - <code>rmd_chunk</code></h3>
+<p>The <code>rmd_chunk</code> node represents executable code chunks with options and metadata.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>engine</code>: The code engine (default: “r”)</li>
+<li><code>label</code>: Optional chunk name/label</li>
+<li><code>options</code>: List of chunk options containing both traditional and YAML options</li>
+<li><code>code</code>: Character vector containing the code lines</li>
+<li><code>indent</code>: Indentation string</li>
+<li><code>n_ticks</code>: Number of backticks used (default: 3)</li>
+</ul>
+<p><strong>Chunk Option Formats:</strong></p>
+<p>Chunks support two option formats that can be used independently or together:</p>
+<ol type="1">
+<li><p><strong>Traditional format</strong>: Options specified in the chunk header after the engine and label ```{{r chunk-label, eval=TRUE, echo=FALSE}}</p></li>
+<li><p><strong>YAML format</strong>: Options specified as YAML comments within the chunk</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r chunk-label}</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
+</ol>
+<p><strong>Option Conflict Resolution:</strong></p>
+<p>When the same option is specified in both formats, YAML options take precedence over traditional options. A warning is emitted when conflicts occur:</p>
+<p><code>{r eval=TRUE} #| eval: false</code></p>
+<p>In this case, <code>eval: false</code> (YAML) wins over <code>eval=TRUE</code> (traditional), and the parser emits: “YAML options override traditional options for: eval”</p>
+<p><strong>Type Handling:</strong></p>
+<ul>
+<li><strong>Traditional options</strong>: Always stored as strings (e.g., <code>&quot;TRUE&quot;</code>, <code>&quot;5&quot;</code>)</li>
+<li><strong>YAML options</strong>: Preserve proper R types (e.g., <code>TRUE</code>, <code>5L</code>, <code>3.14</code>)</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<p><strong>Traditional format chunk:</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r example, eval=TRUE, echo=FALSE}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><strong>YAML format chunk:</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r example}</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><strong>Mixed format chunk (with conflict):</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r example, eval=TRUE}</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>In this case, <code>eval: false</code> (YAML) overrides <code>eval=TRUE</code> (traditional).</p>
+<p><strong>Programmatic creation:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Traditional-style options</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>chunk_node_traditional <span class="ot">=</span> <span class="fu">rmd_chunk</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">engine =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="st">&quot;example&quot;</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">eval =</span> <span class="st">&quot;TRUE&quot;</span>, <span class="at">echo =</span> <span class="st">&quot;FALSE&quot;</span>),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">c</span>(<span class="st">&quot;x &lt;- 1:10&quot;</span>, <span class="st">&quot;mean(x)&quot;</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># YAML-style options with proper types</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>chunk_node_yaml <span class="ot">=</span> <span class="fu">rmd_chunk</span>(</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">engine =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="st">&quot;example&quot;</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(<span class="at">eval =</span> <span class="cn">TRUE</span>, <span class="at">echo =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">c</span>(<span class="st">&quot;x &lt;- 1:10&quot;</span>, <span class="st">&quot;mean(x)&quot;</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>chunk_node_yaml</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;rmd_chunk&gt;</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ engine : chr &quot;r&quot;</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ label  : chr &quot;example&quot;</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ options:List of 2</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .. $ eval: logi TRUE</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  .. $ echo: logi FALSE</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ code   : chr [1:2] &quot;x &lt;- 1:10&quot; &quot;mean(x)&quot;</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ indent : chr &quot;&quot;</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ n_ticks: int 3</span></span></code></pre></div>
+</div>
+<hr>
+<h3 id="raw-output-chunks---rmd_raw_chunk">Raw Output Chunks - <code>rmd_raw_chunk</code></h3>
+<p>The <code>rmd_raw_chunk</code> node represents raw output chunks for specific formats.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>format</code>: The output format (e.g., “html”, “latex”)</li>
+<li><code>code</code>: Character vector containing the raw content</li>
+<li><code>indent</code>: Indentation string</li>
+<li><code>n_ticks</code>: Number of backticks used</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text that would be parsed:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class=&#39;custom&#39;&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;p&gt;Custom HTML content&lt;/p&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>raw_chunk_node <span class="ot">=</span> <span class="fu">rmd_raw_chunk</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">format =</span> <span class="st">&quot;html&quot;</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">c</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;&lt;div class=&#39;custom&#39;&gt;&quot;</span>, </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;  &lt;p&gt;Custom HTML content&lt;/p&gt;&quot;</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;&lt;/div&gt;&quot;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>raw_chunk_node</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;rmd_raw_chunk&gt;</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ format : chr &quot;html&quot;</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ code   : chr [1:3] &quot;&lt;div class=&#39;custom&#39;&gt;&quot; &quot;  &lt;p&gt;Custom HTML content&lt;/p&gt;&quot; ...</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ indent : chr &quot;&quot;</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ n_ticks: int 3</span></span></code></pre></div>
+</div>
+<hr>
+<h3 id="fenced-code-blocks---rmd_code_block">Fenced Code Blocks - <code>rmd_code_block</code></h3>
+<p>The <code>rmd_code_block</code> node represents non-executable fenced code blocks.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>id</code>: Optional HTML ID attribute</li>
+<li><code>classes</code>: Character vector of CSS classes (e.g., language names like “python”, “r”)</li>
+<li><code>attr</code>: Named character vector for key-value attributes (e.g., <code>c(style=&quot;color:blue&quot;)</code>)</li>
+<li><code>code</code>: Character vector containing the code lines</li>
+<li><code>indent</code>: Indentation string</li>
+<li><code>n_ticks</code>: Number of backticks used</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text that would be parsed:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hello():</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Hello, World!&#39;</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>code_block_node <span class="ot">=</span> <span class="fu">rmd_code_block</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">classes =</span> <span class="fu">c</span>(<span class="st">&quot;python&quot;</span>),</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">c</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;def hello():&quot;</span>, </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;    print(&#39;Hello, World!&#39;)&quot;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>code_block_node</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;rmd_code_block&gt;</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ id     : chr(0) </span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ classes: chr &quot;python&quot;</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ attr   : chr(0) </span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ code   : chr [1:2] &quot;def hello():&quot; &quot;    print(&#39;Hello, World!&#39;)&quot;</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ indent : chr &quot;&quot;</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ n_ticks: int 3</span></span></code></pre></div>
+</div>
+<hr>
+<h3 id="code-block-literals---rmd_code_block_literal">Code Block Literals - <code>rmd_code_block_literal</code></h3>
+<p>The <code>rmd_code_block_literal</code> node represents code blocks with literal attribute capture using the <code>{...}</code> syntax. This format preserves the raw attribute content exactly as written, making it ideal for displaying code chunk examples.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>attr</code>: Raw attribute string (exactly as written between <code>{{</code> and <code>}}</code>)</li>
+<li><code>code</code>: Character vector containing the code lines</li>
+<li><code>indent</code>: Indentation string</li>
+<li><code>n_ticks</code>: Number of backticks used</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text that would be parsed: <code>{r, echo=TRUE, eval=FALSE} x &lt;- 1:10 mean(x)</code></p>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>code_block_literal_node <span class="ot">=</span> <span class="fu">rmd_code_block_literal</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">attr =</span> <span class="st">&quot;r, echo=TRUE, eval=FALSE&quot;</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="fu">c</span>(</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;x &lt;- 1:10&quot;</span>, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mean(x)&quot;</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>code_block_literal_node</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;rmd_code_block_literal&gt;</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ attr   : chr &quot;r, echo=TRUE, eval=FALSE&quot;</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ code   : chr [1:2] &quot;x &lt;- 1:10&quot; &quot;mean(x)&quot;</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ indent : chr &quot;&quot;</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  @ n_ticks: int 3</span></span></code></pre></div>
+</div>
+<p><strong>Nested Braces Support:</strong></p>
+<p>The literal format can handle nested braces in attributes: <code>{{r, code=&#39;function() { return(1) }&#39;}}</code></p>
+<p>This captures the attribute as: <code>&quot;r, code=&#39;function() { return(1) }&#39;&quot;</code></p>
+<hr>
+<h2 id="structural-elements">Structural Elements</h2>
+<h3 id="fenced-divs---rmd_fenced_div_open-rmd_fenced_div_close">Fenced Divs - <code>rmd_fenced_div_open</code> &amp; <code>rmd_fenced_div_close</code></h3>
+<p>Fenced divs are represented as pairs of nodes in the linear AST sequence. The <code>rmd_fenced_div_open</code> node marks the beginning of a fenced div block, and the <code>rmd_fenced_div_close</code> node marks the end. Any content between these nodes is considered to be inside the fenced div.</p>
+<p><strong>rmd_fenced_div_open Properties:</strong></p>
+<ul>
+<li><code>id</code>: Optional HTML ID attribute<br>
+</li>
+<li><code>classes</code>: Character vector of CSS classes</li>
+<li><code>attr</code>: Named character vector for key-value attributes</li>
+</ul>
+<p><strong>rmd_fenced_div_close Properties:</strong> None (just a marker)</p>
+<p><strong>Example:</strong></p>
+<p>Raw text that would be parsed:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>::: {.warning #important}</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>This content is inside the fenced div.</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>More content here.</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
+<p>This would create a sequence of nodes: 1. <code>rmd_fenced_div_open</code> with attributes 2. <code>rmd_markdown</code> with “This content is inside the fenced div.” 3. <code>rmd_markdown</code> with “More content here.” 4. <code>rmd_fenced_div_close</code></p>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the opening node</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>fenced_div_open_node <span class="ot">=</span> <span class="fu">rmd_fenced_div_open</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">classes =</span> <span class="fu">c</span>(<span class="st">&quot;.warning&quot;</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">attr =</span> <span class="fu">c</span>(<span class="at">id =</span> <span class="st">&quot;important&quot;</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the closing node</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>fenced_div_close_node <span class="ot">=</span> <span class="fu">rmd_fenced_div_close</span>()</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># These would typically be combined with content nodes in an rmd_ast</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>ast_with_div <span class="ot">=</span> <span class="fu">rmd_ast</span>(<span class="fu">list</span>(</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  fenced_div_open_node,</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_markdown</span>(</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">lines =</span> <span class="st">&quot;This content is inside the fenced div.&quot;</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_markdown</span>(</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">lines =</span> <span class="st">&quot;More content here.&quot;</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  fenced_div_close_node</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>))</span></code></pre></div>
+</div>
+<hr>
+<h1 id="extracted-elements">Extracted Elements</h1>
+<p>The following classes represent elements that can be extracted from AST nodes through secondary parsing, rather than being direct nodes in the AST structure. These elements are found within markdown text and code content.</p>
+<h2 id="inline-code---rmd_inline_code">Inline Code - <code>rmd_inline_code</code></h2>
+<p>The <code>rmd_inline_code</code> class represents inline code expressions extracted from markdown text.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>engine</code>: The code engine (empty string for static code)</li>
+<li><code>code</code>: The inline code content</li>
+<li><code>braced</code>: Whether the code uses braced syntax</li>
+<li><code>start</code>: Starting position in the source text</li>
+<li><code>length</code>: Length of the inline code</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text containing inline code:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>The result is 4.</span></code></pre></div>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create directly</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>inline_code_obj <span class="ot">=</span> <span class="fu">rmd_inline_code</span>(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">engine =</span> <span class="st">&quot;r&quot;</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">code =</span> <span class="st">&quot;2 + 2&quot;</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">braced =</span> <span class="cn">FALSE</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>inline_code_obj</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  rmd_inline_code[-1,-1] `r 2 + 2`</span></span></code></pre></div>
+</div>
+<hr>
+<h2 id="shortcode-function-calls---rmd_shortcode">Shortcode Function Calls - <code>rmd_shortcode</code></h2>
+<p>The <code>rmd_shortcode</code> class represents Quarto shortcode function calls extracted from markdown content.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>func</code>: The shortcode function name</li>
+<li><code>args</code>: Character vector of arguments</li>
+<li><code>start</code>: Starting position in the source text</li>
+<li><code>length</code>: Length of the shortcode</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text containing a shortcode:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>{{&lt; embed type=video src=example.mp4 &gt;}}</span></code></pre></div>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create directly</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>shortcode_obj <span class="ot">=</span> <span class="fu">rmd_shortcode</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">func =</span> <span class="st">&quot;embed&quot;</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">args =</span> <span class="fu">c</span>(<span class="st">&quot;type=video&quot;</span>, <span class="st">&quot;src=example.mp4&quot;</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>shortcode_obj</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  rmd_shortcode[-1,-1] {{&lt; embed type=video src=example.mp4 &gt;}}</span></span></code></pre></div>
+</div>
+<hr>
+<h2 id="spans---rmd_span">Spans - <code>rmd_span</code></h2>
+<p>The <code>rmd_span</code> class represents inline span elements with attributes extracted from markdown text.</p>
+<p><strong>Properties:</strong></p>
+<ul>
+<li><code>text</code>: The text content of the span</li>
+<li><code>id</code>: Optional HTML ID (must start with ‘#’ if present)</li>
+<li><code>classes</code>: Character vector of CSS classes (must start with ‘.’ if present)</li>
+<li><code>attr</code>: Named character vector of additional attributes</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Raw text containing a span:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Important text</span><span class="co">]</span>{.highlight #key}</span></code></pre></div>
+<p>Programmatic creation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create directly</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>span_obj <span class="ot">=</span> <span class="fu">rmd_span</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="st">&quot;Important text&quot;</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>(<span class="st">&quot;#key&quot;</span>),</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">classes =</span> <span class="fu">c</span>(<span class="st">&quot;.highlight&quot;</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>span_obj</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  rmd_span [Important text]{#key .highlight}</span></span></code></pre></div>
+</div>
+<hr>
+<h2 id="extraction-functions">Extraction Functions</h2>
+<p>These utility functions extract the above elements from AST nodes:</p>
+<ul>
+<li><code>rmd_extract_inline_code()</code>: Extract inline code from text</li>
+<li><code>rmd_extract_shortcodes()</code>: Extract shortcodes from text<br>
+</li>
+<li><code>rmd_extract_spans()</code>: Extract spans from text</li>
+<li><code>rmd_has_inline_code()</code>: Check if text contains inline code</li>
+<li><code>rmd_has_shortcode()</code>: Check if text contains shortcodes</li>
+<li><code>rmd_has_span()</code>: Check if text contains spans</li>
+</ul>
+<hr>
+
+
+
+
+
+</body></html>

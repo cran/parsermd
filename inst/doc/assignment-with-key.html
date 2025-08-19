@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.20">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Example - Assignment with Key</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+</style>
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Example - Assignment with Key</h1>
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parsermd)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>A common workflow in educational settings involves creating homework assignments that contain both student scaffolding and instructor solutions within the same document. This vignette demonstrates how to use <code>parsermd</code> to process such documents and automatically generate separate versions for students and instructors.</p>
+<p>The typical workflow involves:</p>
+<ol type="1">
+<li><strong>Primary Document</strong>: A single Qmd/Rmd file containing both student prompts and complete solutions</li>
+<li><strong>Student Version</strong>: Contains only student chunks with scaffolding and instructions</li>
+<li><strong>Instructor Key</strong>: Contains only solution chunks with complete answers</li>
+<li><strong>Minimalist Key</strong>: A streamlined version with solutions only (no instructional text)</li>
+</ol>
+<h2 id="sample-assignment-structure">Sample Assignment Structure</h2>
+<p>Let’s start by examining a sample homework assignment that follows this pattern. The assignment includes multiple exercises, each with two code chunks:</p>
+<ul>
+<li><strong>Student chunk</strong>: labeled with <code>-student</code> suffix, contains scaffolding code</li>
+<li><strong>Solution chunk</strong>: labeled with <code>-key</code> suffix, contains complete solutions</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the sample assignment</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>assignment_path <span class="ot">=</span> <span class="fu">system.file</span>(<span class="st">&quot;examples/hw03-full.qmd&quot;</span>, <span class="at">package =</span> <span class="st">&quot;parsermd&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">readLines</span>(assignment_path), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; ---
+#&gt; title: &quot;Homework 3 - Data Analysis with R&quot;
+#&gt; author: &quot;Your Name&quot;
+#&gt; date: &quot;Due: Friday, March 15, 2024&quot;
+#&gt; format: html
+#&gt; execute:
+#&gt;   warning: false
+#&gt;   message: false
+#&gt; ---
+#&gt; 
+#&gt; ## Setup
+#&gt; 
+#&gt; Load the required packages for this assignment:
+#&gt; 
+#&gt; ```{r setup}
+#&gt; library(tidyverse)
+#&gt; library(palmerpenguins)
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 1: Basic Data Exploration
+#&gt; 
+#&gt; Examine the `penguins` dataset from the `palmerpenguins` package. Your task is to create a summary of the dataset that shows the number of observations and variables, and identify any missing values.
+#&gt; 
+#&gt; ```{r ex1-student}
+#&gt; # Write your code here to:
+#&gt; # 1. Display the dimensions of the penguins dataset
+#&gt; # 2. Show the structure of the dataset
+#&gt; # 3. Count missing values in each column
+#&gt; 
+#&gt; ```
+#&gt; 
+#&gt; ```{r ex1-key}
+#&gt; # Solution: Basic data exploration
+#&gt; # 1. Display dimensions
+#&gt; cat(&quot;Dataset dimensions:&quot;, dim(penguins), &quot;\n&quot;)
+#&gt; cat(&quot;Rows:&quot;, nrow(penguins), &quot;Columns:&quot;, ncol(penguins), &quot;\n\n&quot;)
+#&gt; 
+#&gt; # 2. Show structure
+#&gt; str(penguins)
+#&gt; 
+#&gt; # 3. Count missing values
+#&gt; cat(&quot;\nMissing values by column:\n&quot;)
+#&gt; penguins %&gt;%
+#&gt;   summarise(across(everything(), ~ sum(is.na(.))))
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 2: Data Visualization
+#&gt; 
+#&gt; Create a scatter plot showing the relationship between flipper length and body mass for penguins. Color the points by species and add appropriate labels and a title.
+#&gt; 
+#&gt; ```{r ex2-student}
+#&gt; # Create a scatter plot with:
+#&gt; # - x-axis: flipper_length_mm
+#&gt; # - y-axis: body_mass_g
+#&gt; # - color by species
+#&gt; # - add appropriate labels and title
+#&gt; 
+#&gt; ggplot(data = penguins, aes(x = ___, y = ___)) +
+#&gt;   geom_point(aes(color = ___)) +
+#&gt;   labs(
+#&gt;     title = &quot;___&quot;,
+#&gt;     x = &quot;___&quot;,
+#&gt;     y = &quot;___&quot;
+#&gt;   )
+#&gt; ```
+#&gt; 
+#&gt; ```{r ex2-key}
+#&gt; # Solution: Scatter plot of flipper length vs body mass
+#&gt; ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+#&gt;   geom_point(aes(color = species), alpha = 0.8, size = 2) +
+#&gt;   labs(
+#&gt;     title = &quot;Penguin Flipper Length vs Body Mass by Species&quot;,
+#&gt;     x = &quot;Flipper Length (mm)&quot;,
+#&gt;     y = &quot;Body Mass (g)&quot;,
+#&gt;     color = &quot;Species&quot;
+#&gt;   ) +
+#&gt;   theme_minimal() +
+#&gt;   scale_color_viridis_d()
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 3: Statistical Analysis
+#&gt; 
+#&gt; Calculate summary statistics for bill length by species. Create a table showing the mean, median, standard deviation, and count for each species.
+#&gt; 
+#&gt; ```{r ex3-student}
+#&gt; # Calculate summary statistics for bill_length_mm by species
+#&gt; # Include: mean, median, standard deviation, and count
+#&gt; # Remove missing values before calculating
+#&gt; 
+#&gt; penguins %&gt;%
+#&gt;   # Add your code here
+#&gt; 
+#&gt; ```
+#&gt; 
+#&gt; ```{r ex3-key}
+#&gt; # Solution: Summary statistics for bill length by species
+#&gt; penguins %&gt;%
+#&gt;   filter(!is.na(bill_length_mm)) %&gt;%
+#&gt;   group_by(species) %&gt;%
+#&gt;   summarise(
+#&gt;     count = n(),
+#&gt;     mean_bill_length = round(mean(bill_length_mm), 2),
+#&gt;     median_bill_length = round(median(bill_length_mm), 2),
+#&gt;     sd_bill_length = round(sd(bill_length_mm), 2),
+#&gt;     .groups = &quot;drop&quot;
+#&gt;   ) %&gt;%
+#&gt;   arrange(desc(mean_bill_length))
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 4: Advanced Data Manipulation
+#&gt; 
+#&gt; Filter the dataset to include only penguins with complete data (no missing values), then create a new variable called `bill_ratio` that represents the ratio of bill length to bill depth. Finally, identify which species has the highest average bill ratio.
+#&gt; 
+#&gt; ```{r ex4-student}
+#&gt; # Step 1: Filter for complete cases
+#&gt; # Step 2: Create bill_ratio variable (bill_length_mm / bill_depth_mm)
+#&gt; # Step 3: Calculate average bill_ratio by species
+#&gt; # Step 4: Identify species with highest average ratio
+#&gt; 
+#&gt; ```
+#&gt; 
+#&gt; ```{r ex4-key}
+#&gt; # Solution: Advanced data manipulation
+#&gt; complete_penguins = penguins %&gt;%
+#&gt;   # Remove rows with any missing values
+#&gt;   filter(complete.cases(.)) %&gt;%
+#&gt;   # Create bill_ratio variable
+#&gt;   mutate(bill_ratio = bill_length_mm / bill_depth_mm)
+#&gt; 
+#&gt; # Calculate average bill ratio by species
+#&gt; bill_ratio_summary = complete_penguins %&gt;%
+#&gt;   group_by(species) %&gt;%
+#&gt;   summarise(
+#&gt;     avg_bill_ratio = round(mean(bill_ratio), 3),
+#&gt;     n = n(),
+#&gt;     .groups = &quot;drop&quot;
+#&gt;   ) %&gt;%
+#&gt;   arrange(desc(avg_bill_ratio))
+#&gt; 
+#&gt; print(bill_ratio_summary)
+#&gt; 
+#&gt; # Identify species with highest average bill ratio
+#&gt; highest_ratio_species = bill_ratio_summary %&gt;%
+#&gt;   slice_max(avg_bill_ratio, n = 1) %&gt;%
+#&gt;   pull(species)
+#&gt; 
+#&gt; cat(&quot;\nSpecies with highest average bill ratio:&quot;, as.character(highest_ratio_species))
+#&gt; ```
+#&gt; 
+#&gt; ## Bonus Exercise: Conditional Logic
+#&gt; 
+#&gt; Write a function that categorizes penguins as &quot;small&quot;, &quot;medium&quot;, or &quot;large&quot; based on their body mass. Use the following criteria:
+#&gt; - Small: body mass &lt; 3500g
+#&gt; - Medium: body mass between 3500g and 4500g  
+#&gt; - Large: body mass &gt; 4500g
+#&gt; 
+#&gt; Apply this function to create a new column and create a summary table.
+#&gt; 
+#&gt; ```{r bonus-student}
+#&gt; # Create a function to categorize penguins by size
+#&gt; categorize_size = function(mass) {
+#&gt;   # Add your conditional logic here
+#&gt;   
+#&gt; }
+#&gt; 
+#&gt; # Apply the function and create summary
+#&gt; ```
+#&gt; 
+#&gt; ```{r bonus-key}
+#&gt; # Solution: Conditional logic for size categorization
+#&gt; categorize_size = function(mass) {
+#&gt;   case_when(
+#&gt;     is.na(mass) ~ &quot;Unknown&quot;,
+#&gt;     mass &lt; 3500 ~ &quot;Small&quot;,
+#&gt;     mass &gt;= 3500 &amp; mass &lt;= 4500 ~ &quot;Medium&quot;,
+#&gt;     mass &gt; 4500 ~ &quot;Large&quot;
+#&gt;   )
+#&gt; }
+#&gt; 
+#&gt; # Apply the function and create summary
+#&gt; penguins_with_size = penguins %&gt;%
+#&gt;   mutate(size_category = categorize_size(body_mass_g))
+#&gt; 
+#&gt; # Create summary table
+#&gt; size_summary = penguins_with_size %&gt;%
+#&gt;   count(species, size_category) %&gt;%
+#&gt;   pivot_wider(names_from = size_category, values_from = n, values_fill = 0)
+#&gt; 
+#&gt; print(size_summary)
+#&gt; 
+#&gt; # Overall size distribution
+#&gt; penguins_with_size %&gt;%
+#&gt;   count(size_category) %&gt;%
+#&gt;   mutate(percentage = round(n / sum(n) * 100, 1))
+#&gt; ```</code></pre>
+</div>
+<h2 id="parsing-the-document">Parsing the Document</h2>
+<p>First, let’s parse the assignment document to understand its structure:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse the assignment</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rmd <span class="ot">=</span> <span class="fu">parse_rmd</span>(assignment_path)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the document structure</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(rmd)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── YAML [5 fields]</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Setup</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 2 lines] - setup</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 1: Basic Data Exploration</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Chunk [r, 5 lines] - ex1-student</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 12 lines] - ex1-key</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 2: Data Visualization</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Chunk [r, 13 lines] - ex2-student</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 11 lines] - ex2-key</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 3: Statistical Analysis</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Chunk [r, 7 lines] - ex3-student</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 12 lines] - ex3-key</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 4: Advanced Data Manipulation</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Chunk [r, 5 lines] - ex4-student</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 25 lines] - ex4-key</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; └── Heading [h2] - Bonus Exercise: Conditional Logic</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ├── Markdown [6 lines]</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ├── Chunk [r, 7 lines] - bonus-student</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     └── Chunk [r, 25 lines] - bonus-key</span></span></code></pre></div>
+</div>
+<p>We can also examine the document as a tibble to better understand the chunk labels and structure:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to tibble for easier inspection</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(rmd)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 24 × 4</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    sec_h2                             type         label       ast           </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                              &lt;chr&gt;        &lt;chr&gt;       &lt;list&gt;        </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  1 &lt;NA&gt;                               rmd_yaml     &lt;NA&gt;        &lt;yaml&gt;        </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  2 Setup                              rmd_heading  &lt;NA&gt;        &lt;heading [h2]&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  3 Setup                              rmd_markdown &lt;NA&gt;        &lt;markdown&gt;    </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  4 Setup                              rmd_chunk    setup       &lt;chunk [r]&gt;   </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  5 Exercise 1: Basic Data Exploration rmd_heading  &lt;NA&gt;        &lt;heading [h2]&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  6 Exercise 1: Basic Data Exploration rmd_markdown &lt;NA&gt;        &lt;markdown&gt;    </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  7 Exercise 1: Basic Data Exploration rmd_chunk    ex1-student &lt;chunk [r]&gt;   </span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  8 Exercise 1: Basic Data Exploration rmd_chunk    ex1-key     &lt;chunk [r]&gt;   </span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9 Exercise 2: Data Visualization     rmd_heading  &lt;NA&gt;        &lt;heading [h2]&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 Exercise 2: Data Visualization     rmd_markdown &lt;NA&gt;        &lt;markdown&gt;    </span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # ℹ 14 more rows</span></span></code></pre></div>
+</div>
+<h2 id="creating-the-student-version">Creating the Student Version</h2>
+<p>To create the student version, we need to:</p>
+<ol type="1">
+<li>Keep all markdown content (instructions, problem statements)</li>
+<li>Keep only the student chunks (those with <code>-student</code> suffix)</li>
+<li>Remove all solution chunks</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select student chunks and all non-chunk content</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>student_version <span class="ot">=</span> rmd <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_select</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Easier to specify the nodes we want to remove</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">has_label</span>(<span class="st">&quot;*-key&quot;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the student version structure</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>student_version</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── YAML [5 fields]</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Setup</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 2 lines] - setup</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 1: Basic Data Exploration</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 5 lines] - ex1-student</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 2: Data Visualization</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 13 lines] - ex2-student</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 3: Statistical Analysis</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 7 lines] - ex3-student</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 4: Advanced Data Manipulation</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 5 lines] - ex4-student</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; └── Heading [h2] - Bonus Exercise: Conditional Logic</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ├── Markdown [6 lines]</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     └── Chunk [r, 7 lines] - bonus-student</span></span></code></pre></div>
+</div>
+<p>If we don’t want to let the student on to the fact that the chunks are just for them we can use <code>rmd_modify()</code> to remove the <code>-student</code> suffix:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>student_version <span class="ot">=</span> student_version <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_modify</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(node) {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rmd_node_label</span>(node) <span class="ot">=</span> stringr<span class="sc">::</span><span class="fu">str_remove</span>(<span class="fu">rmd_node_label</span>(node), <span class="st">&quot;-student&quot;</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      node</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">has_label</span>(<span class="st">&quot;*-student&quot;</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the first few chunks to see the label changes</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>student_version</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── YAML [5 fields]</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Setup</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 2 lines] - setup</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 1: Basic Data Exploration</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 5 lines] - ex1</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 2: Data Visualization</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 13 lines] - ex2</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 3: Statistical Analysis</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 7 lines] - ex3</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 4: Advanced Data Manipulation</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 5 lines] - ex4</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; └── Heading [h2] - Bonus Exercise: Conditional Logic</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ├── Markdown [6 lines]</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     └── Chunk [r, 7 lines] - bonus</span></span></code></pre></div>
+</div>
+<p>Let’s see what the student version looks like as a document:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to document and display first few sections</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_document</span>(student_version) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; ---
+#&gt; title: Homework 3 - Data Analysis with R
+#&gt; author: Your Name
+#&gt; date: &#39;Due: Friday, March 15, 2024&#39;
+#&gt; format: html
+#&gt; execute:
+#&gt;   warning: false
+#&gt;   message: false
+#&gt; ---
+#&gt; 
+#&gt; ## Setup
+#&gt; 
+#&gt; Load the required packages for this assignment:
+#&gt; 
+#&gt; 
+#&gt; ```{r setup}
+#&gt; library(tidyverse)
+#&gt; library(palmerpenguins)
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 1: Basic Data Exploration
+#&gt; 
+#&gt; Examine the `penguins` dataset from the `palmerpenguins` package. Your task is to create a summary of the dataset that shows the number of observations and variables, and identify any missing values.
+#&gt; 
+#&gt; 
+#&gt; ```{r ex1}
+#&gt; # Write your code here to:
+#&gt; # 1. Display the dimensions of the penguins dataset
+#&gt; # 2. Show the structure of the dataset
+#&gt; # 3. Count missing values in each column
+#&gt; 
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 2: Data Visualization
+#&gt; 
+#&gt; Create a scatter plot showing the relationship between flipper length and body mass for penguins. Color the points by species and add appropriate labels and a title.
+#&gt; 
+#&gt; 
+#&gt; ```{r ex2}
+#&gt; # Create a scatter plot with:
+#&gt; # - x-axis: flipper_length_mm
+#&gt; # - y-axis: body_mass_g
+#&gt; # - color by species
+#&gt; # - add appropriate labels and title
+#&gt; 
+#&gt; ggplot(data = penguins, aes(x = ___, y = ___)) +
+#&gt;   geom_point(aes(color = ___)) +
+#&gt;   labs(
+#&gt;     title = &quot;___&quot;,
+#&gt;     x = &quot;___&quot;,
+#&gt;     y = &quot;___&quot;
+#&gt;   )
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 3: Statistical Analysis
+#&gt; 
+#&gt; Calculate summary statistics for bill length by species. Create a table showing the mean, median, standard deviation, and count for each species.
+#&gt; 
+#&gt; 
+#&gt; ```{r ex3}
+#&gt; # Calculate summary statistics for bill_length_mm by species
+#&gt; # Include: mean, median, standard deviation, and count
+#&gt; # Remove missing values before calculating
+#&gt; 
+#&gt; penguins %&gt;%
+#&gt;   # Add your code here
+#&gt; 
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 4: Advanced Data Manipulation
+#&gt; 
+#&gt; Filter the dataset to include only penguins with complete data (no missing values), then create a new variable called `bill_ratio` that represents the ratio of bill length to bill depth. Finally, identify which species has the highest average bill ratio.
+#&gt; 
+#&gt; 
+#&gt; ```{r ex4}
+#&gt; # Step 1: Filter for complete cases
+#&gt; # Step 2: Create bill_ratio variable (bill_length_mm / bill_depth_mm)
+#&gt; # Step 3: Calculate average bill_ratio by species
+#&gt; # Step 4: Identify species with highest average ratio
+#&gt; 
+#&gt; ```
+#&gt; 
+#&gt; ## Bonus Exercise: Conditional Logic
+#&gt; 
+#&gt; Write a function that categorizes penguins as &quot;small&quot;, &quot;medium&quot;, or &quot;large&quot; based on their body mass. Use the following criteria:
+#&gt; - Small: body mass &lt; 3500g
+#&gt; - Medium: body mass between 3500g and 4500g  
+#&gt; - Large: body mass &gt; 4500g
+#&gt; 
+#&gt; Apply this function to create a new column and create a summary table.
+#&gt; 
+#&gt; 
+#&gt; ```{r bonus}
+#&gt; # Create a function to categorize penguins by size
+#&gt; categorize_size = function(mass) {
+#&gt;   # Add your conditional logic here
+#&gt;   
+#&gt; }
+#&gt; 
+#&gt; # Apply the function and create summary
+#&gt; ```</code></pre>
+</div>
+<p>We can also save this to a file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save student version (not run in vignette)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as_document</span>(student_version) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">writeLines</span>(<span class="st">&quot;homework-student.qmd&quot;</span>)</span></code></pre></div>
+</div>
+<h2 id="creating-the-instructor-key">Creating the Instructor Key</h2>
+<p>For the instructor key, we want to:</p>
+<ol type="1">
+<li>Keep all markdown content for context</li>
+<li>Keep only the solution chunks (those with <code>-key</code> suffix)</li>
+<li>Remove all student chunks</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select solution chunks and all non-chunk content</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>instructor_key <span class="ot">=</span> rmd <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_select</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Again this is easier to specify the nodes we want to remove</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">has_label</span>(<span class="st">&quot;*-student&quot;</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the instructor key structure</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>instructor_key</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── YAML [5 fields]</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Setup</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 2 lines] - setup</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 1: Basic Data Exploration</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 12 lines] - ex1-key</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 2: Data Visualization</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 11 lines] - ex2-key</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 3: Statistical Analysis</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 12 lines] - ex3-key</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 4: Advanced Data Manipulation</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   ├── Markdown [1 line]</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 25 lines] - ex4-key</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; └── Heading [h2] - Bonus Exercise: Conditional Logic</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     ├── Markdown [6 lines]</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     └── Chunk [r, 25 lines] - bonus-key</span></span></code></pre></div>
+</div>
+<p>Let’s examine the instructor key document:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to document</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>instructor_doc <span class="ot">=</span> <span class="fu">as_document</span>(instructor_key)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display first part of the document</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">head</span>(<span class="fu">strsplit</span>(instructor_doc, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)[[<span class="dv">1</span>]], <span class="dv">50</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span></code></pre></div>
+</div>
+<h2 id="creating-a-minimalist-key">Creating a Minimalist Key</h2>
+<p>Sometimes instructors may want a very streamlined version that contains only the solution code without all the instructional text.</p>
+<p>We can create this by:</p>
+<ol type="1">
+<li>Keeping only exercise headings and solution chunks</li>
+<li>Removing all markdown instructions</li>
+<li>Setting <code>#| include: false</code> for the <code>setup</code> chunk</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only headings and solution chunks</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>minimalist_key <span class="ot">=</span> rmd <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_select</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep yaml and exercise headings for structure</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">has_type</span>(<span class="st">&quot;rmd_yaml&quot;</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">has_heading</span>(<span class="fu">c</span>(<span class="st">&quot;Exercise *&quot;</span>, <span class="st">&quot;Bonus*&quot;</span>)),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Keep only solution chunks</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">has_label</span>(<span class="fu">c</span>(<span class="st">&quot;*-key&quot;</span>, <span class="st">&quot;setup&quot;</span>))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rmd_modify</span>(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(node) {</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rmd_node_options</span>(node) <span class="ot">=</span> <span class="fu">list</span>(<span class="at">include =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      node</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">has_label</span>(<span class="st">&quot;setup&quot;</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the minimalist key structure</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>minimalist_key</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── YAML [5 fields]</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Chunk [r, 2 lines] - setup</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 1: Basic Data Exploration</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 12 lines] - ex1-key</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 2: Data Visualization</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 11 lines] - ex2-key</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 3: Statistical Analysis</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 12 lines] - ex3-key</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ├── Heading [h2] - Exercise 4: Advanced Data Manipulation</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; │   └── Chunk [r, 25 lines] - ex4-key</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; └── Heading [h2] - Bonus Exercise: Conditional Logic</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     └── Chunk [r, 25 lines] - bonus-key</span></span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to document</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>minimalist_doc <span class="ot">=</span> <span class="fu">as_document</span>(minimalist_key)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(minimalist_doc, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>#&gt; ---
+#&gt; title: Homework 3 - Data Analysis with R
+#&gt; author: Your Name
+#&gt; date: &#39;Due: Friday, March 15, 2024&#39;
+#&gt; format: html
+#&gt; execute:
+#&gt;   warning: false
+#&gt;   message: false
+#&gt; ---
+#&gt; 
+#&gt; ```{r setup}
+#&gt; #| include: false
+#&gt; library(tidyverse)
+#&gt; library(palmerpenguins)
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 1: Basic Data Exploration
+#&gt; 
+#&gt; ```{r ex1-key}
+#&gt; # Solution: Basic data exploration
+#&gt; # 1. Display dimensions
+#&gt; cat(&quot;Dataset dimensions:&quot;, dim(penguins), &quot;\n&quot;)
+#&gt; cat(&quot;Rows:&quot;, nrow(penguins), &quot;Columns:&quot;, ncol(penguins), &quot;\n\n&quot;)
+#&gt; 
+#&gt; # 2. Show structure
+#&gt; str(penguins)
+#&gt; 
+#&gt; # 3. Count missing values
+#&gt; cat(&quot;\nMissing values by column:\n&quot;)
+#&gt; penguins %&gt;%
+#&gt;   summarise(across(everything(), ~ sum(is.na(.))))
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 2: Data Visualization
+#&gt; 
+#&gt; ```{r ex2-key}
+#&gt; # Solution: Scatter plot of flipper length vs body mass
+#&gt; ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+#&gt;   geom_point(aes(color = species), alpha = 0.8, size = 2) +
+#&gt;   labs(
+#&gt;     title = &quot;Penguin Flipper Length vs Body Mass by Species&quot;,
+#&gt;     x = &quot;Flipper Length (mm)&quot;,
+#&gt;     y = &quot;Body Mass (g)&quot;,
+#&gt;     color = &quot;Species&quot;
+#&gt;   ) +
+#&gt;   theme_minimal() +
+#&gt;   scale_color_viridis_d()
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 3: Statistical Analysis
+#&gt; 
+#&gt; ```{r ex3-key}
+#&gt; # Solution: Summary statistics for bill length by species
+#&gt; penguins %&gt;%
+#&gt;   filter(!is.na(bill_length_mm)) %&gt;%
+#&gt;   group_by(species) %&gt;%
+#&gt;   summarise(
+#&gt;     count = n(),
+#&gt;     mean_bill_length = round(mean(bill_length_mm), 2),
+#&gt;     median_bill_length = round(median(bill_length_mm), 2),
+#&gt;     sd_bill_length = round(sd(bill_length_mm), 2),
+#&gt;     .groups = &quot;drop&quot;
+#&gt;   ) %&gt;%
+#&gt;   arrange(desc(mean_bill_length))
+#&gt; ```
+#&gt; 
+#&gt; ## Exercise 4: Advanced Data Manipulation
+#&gt; 
+#&gt; ```{r ex4-key}
+#&gt; # Solution: Advanced data manipulation
+#&gt; complete_penguins = penguins %&gt;%
+#&gt;   # Remove rows with any missing values
+#&gt;   filter(complete.cases(.)) %&gt;%
+#&gt;   # Create bill_ratio variable
+#&gt;   mutate(bill_ratio = bill_length_mm / bill_depth_mm)
+#&gt; 
+#&gt; # Calculate average bill ratio by species
+#&gt; bill_ratio_summary = complete_penguins %&gt;%
+#&gt;   group_by(species) %&gt;%
+#&gt;   summarise(
+#&gt;     avg_bill_ratio = round(mean(bill_ratio), 3),
+#&gt;     n = n(),
+#&gt;     .groups = &quot;drop&quot;
+#&gt;   ) %&gt;%
+#&gt;   arrange(desc(avg_bill_ratio))
+#&gt; 
+#&gt; print(bill_ratio_summary)
+#&gt; 
+#&gt; # Identify species with highest average bill ratio
+#&gt; highest_ratio_species = bill_ratio_summary %&gt;%
+#&gt;   slice_max(avg_bill_ratio, n = 1) %&gt;%
+#&gt;   pull(species)
+#&gt; 
+#&gt; cat(&quot;\nSpecies with highest average bill ratio:&quot;, as.character(highest_ratio_species))
+#&gt; ```
+#&gt; 
+#&gt; ## Bonus Exercise: Conditional Logic
+#&gt; 
+#&gt; ```{r bonus-key}
+#&gt; # Solution: Conditional logic for size categorization
+#&gt; categorize_size = function(mass) {
+#&gt;   case_when(
+#&gt;     is.na(mass) ~ &quot;Unknown&quot;,
+#&gt;     mass &lt; 3500 ~ &quot;Small&quot;,
+#&gt;     mass &gt;= 3500 &amp; mass &lt;= 4500 ~ &quot;Medium&quot;,
+#&gt;     mass &gt; 4500 ~ &quot;Large&quot;
+#&gt;   )
+#&gt; }
+#&gt; 
+#&gt; # Apply the function and create summary
+#&gt; penguins_with_size = penguins %&gt;%
+#&gt;   mutate(size_category = categorize_size(body_mass_g))
+#&gt; 
+#&gt; # Create summary table
+#&gt; size_summary = penguins_with_size %&gt;%
+#&gt;   count(species, size_category) %&gt;%
+#&gt;   pivot_wider(names_from = size_category, values_from = n, values_fill = 0)
+#&gt; 
+#&gt; print(size_summary)
+#&gt; 
+#&gt; # Overall size distribution
+#&gt; penguins_with_size %&gt;%
+#&gt;   count(size_category) %&gt;%
+#&gt;   mutate(percentage = round(n / sum(n) * 100, 1))
+#&gt; ```</code></pre>
+</div>
+<h2 id="best-practices">Best Practices</h2>
+<p>When creating homework assignments for processing with <code>parsermd</code>, consider these best practices:</p>
+<ol type="1">
+<li><strong>Clear Structure</strong>: Use headings to organize exercises and maintain hierarchy</li>
+<li><strong>Meaningful Labels</strong>: Use descriptive chunk labels that identify the document components and their type (e.g., <code>ex1-student</code>, <code>ex2-key</code>)</li>
+<li><strong>Testing</strong>: Always test the generated versions to ensure they work correctly and you haven’t lost anything important (e.g. your YAML front matter or your setup chunk)</li>
+</ol>
+
+
+
+
+
+</body></html>

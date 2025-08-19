@@ -1,32 +1,34 @@
-as_yaml = function(...) {
-  structure(
-    c(...), class = "rmd_yaml"
-  )
-}
-
 test_that("yaml parsing - good yaml", {
+
   expect_equal(
-    parsermd:::check_yaml_parser("---\n---\n"),
-    as_yaml(character())
+    check_yaml_parser("---\n---\n"),
+    rmd_yaml()
+  )
+
+  expect_equal( # Trailing spaces are ok
+    check_yaml_parser("--- \n---\n"),
+    rmd_yaml()
   )
 
   expect_equal(
-    parsermd:::check_yaml_parser("---\nvalue: 1\n---\n"),
-    as_yaml("value: 1")
+    check_yaml_parser("---\n--- \n"),
+    rmd_yaml()
   )
 
   expect_equal(
-    parsermd:::check_yaml_parser("---\nvalue: 1\nname: bob\n---\n"),
-    as_yaml("value: 1", "name: bob")
+    check_yaml_parser("---\nvalue: 1\n---\n"),
+    rmd_yaml( list(value=1) )
   )
 
   expect_equal(
-    parsermd:::check_yaml_parser("---\nvalue: \"---\"\n---\n"),
-    as_yaml("value: \"---\"")
+    check_yaml_parser("---\nvalue: 1\nname: bob\n---\n"),
+    rmd_yaml( list(value= 1, name= "bob") )
   )
-})
 
-test_that("yaml parsing - authors", {
+  expect_equal(
+    check_yaml_parser("---\nvalue: \"---\"\n---\n"),
+    rmd_yaml( list(value = "---") )
+  )
 
   yaml = '---
 title: "Title"
@@ -35,24 +37,41 @@ author:
 - Jane Doe
 ---\n'
 
-  yaml_res = strsplit(yaml, "\n")[[1]]
-  yaml_res = as_yaml( yaml_res[-c(1, length(yaml_res))] )
-
-  expect_equal(parsermd:::check_yaml_parser(yaml), yaml_res)
+  expect_equal(
+    check_yaml_parser(yaml),
+    rmd_yaml( list(title = "Title", author = c("John Doe", "Jane Doe")) )
+  )
 })
 
 test_that("yaml parsing - bad yaml", {
-  expect_error(parsermd:::check_yaml_parser("--\n---\n"))
-  expect_error(parsermd:::check_yaml_parser("---\n--\n"))
-  expect_error(parsermd:::check_yaml_parser("----\n---\n"))
-  expect_error(parsermd:::check_yaml_parser("---\n----\n"))
-  expect_error(parsermd:::check_yaml_parser("---\n"))
+  expect_snapshot(check_yaml_parser("--\n---\n"), error=TRUE)
+  expect_snapshot(check_yaml_parser("---\n--\n"), error=TRUE)
+  expect_snapshot(check_yaml_parser("----\n---\n"), error=TRUE)
+  expect_snapshot(check_yaml_parser("---\n----\n"), error=TRUE)
+  expect_snapshot(check_yaml_parser("---\n"), error=TRUE)
+})
 
-  expect_snapshot_error(parsermd:::check_yaml_parser("--\n---\n"))
-  expect_snapshot_error(parsermd:::check_yaml_parser("---\n--\n"))
-  expect_snapshot_error(parsermd:::check_yaml_parser("----\n---\n"))
-  expect_snapshot_error(parsermd:::check_yaml_parser("---\n----\n"))
-  expect_snapshot_error(parsermd:::check_yaml_parser("---\n"))
+test_that("yaml parsing - blank lines", {
+
+  expect_equal(
+    check_yaml_parser("---\nvalue: 1\n\n---\n"),
+    rmd_yaml( list(value=1) )
+  )
+
+  expect_equal(
+    check_yaml_parser("---\nvalue1: 1\n\nvalue2: 2\n---\n"),
+    rmd_yaml( list(value1=1, value2=2) )
+  )
+
+  expect_snapshot(
+    check_yaml_parser("---\n\n---\n"),
+    error=TRUE
+  )
+
+  expect_snapshot(
+    check_yaml_parser("---\n\nvalue: 1\n---\n"),
+    error=TRUE
+  )
 })
 
 test_that("GitHub #25 - Unicode + YAML", {
@@ -67,4 +86,57 @@ test_that("GitHub #25 - Unicode + YAML", {
   rmd = "---\nauthor: \"Sébastien Rochette\"\n---\n"
 
   expect_s3_class(parse_rmd(rmd), "rmd_ast")
+})
+
+test_that("Pandoc - yaml metadata block", { # See https://pandoc.org/MANUAL.html#extension-yaml_metadata_block
+
+  expect_equal(
+    check_yaml_parser("---\n...\n"),
+    rmd_yaml()
+  )
+
+  expect_equal(
+    check_yaml_parser("---\nvalue: 1\n...\n"),
+    rmd_yaml( list(value=1) )
+  )
+
+  expect_equal(
+    parse_rmd("---\n---\n---\n...\n"),
+    rmd_ast( list(
+      rmd_yaml(),
+      rmd_yaml()
+    ) )
+  )
+
+  expect_equal(
+    parse_rmd("---\nvalue: 1\n---\n---\nvalue: 2\n...\n"),
+    rmd_ast( list(
+      rmd_yaml( list(value=1) ),
+      rmd_yaml( list(value=2) )
+    ) )
+  )
+
+  expect_equal(
+    parse_rmd("---\n\n...\n"),
+    rmd_ast( list(
+      rmd_markdown(c("---", "", "..."))
+    ) )
+  )
+
+  expect_equal(
+    parse_rmd("---\n\n---\n---\n...\n"),
+    rmd_ast( list(
+      rmd_markdown("---"),
+      rmd_yaml(),
+      rmd_markdown("...")
+    ) )
+  )
+
+  expect_equal(
+    parse_rmd("---\n---\n---\n\n...\n"),
+    rmd_ast( list(
+      rmd_yaml(),
+      rmd_markdown(c("---", "", "..."))
+    ) )
+  )
 })

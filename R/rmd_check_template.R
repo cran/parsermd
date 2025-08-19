@@ -11,12 +11,12 @@
 #' @return Invisibly returns `TRUE` if the rmd matches the template, `FALSE` otherwise.
 #'
 #' @examples
-#' tmpl = parse_rmd(system.file("hw01.Rmd", package = "parsermd")) %>%
+#' tmpl = parse_rmd(system.file("examples/hw01.Rmd", package = "parsermd")) %>%
 #'   rmd_select(by_section(c("Exercise *", "Solution"))) %>%
 #'   rmd_template(keep_content = TRUE)
 #'
 #' rmd_check_template(
-#'   system.file("hw01-student.Rmd", package = "parsermd"),
+#'   system.file("examples/hw01-student.Rmd", package = "parsermd"),
 #'   tmpl
 #' )
 #'
@@ -133,7 +133,7 @@ li_missing = function(secs, type, label = NA) {
     collapse = " > "
   ) )
 
-  text = if (type == "rmd_yaml" | type == "rmd_yaml_list") {
+  text = if (type == "rmd_yaml") {
     "{.val YAML} cannot be located."
   } else if (type == "rmd_heading") {
     "Section {sec} cannot be located."

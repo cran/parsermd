@@ -4,7 +4,7 @@
 \alias{rmd_select}
 \title{Select nodes of an Rmd ast}
 \usage{
-rmd_select(x, ...)
+rmd_select(x, ..., keep_yaml = TRUE)
 }
 \arguments{
 \item{x}{Rmd object, e.g. \code{rmd_ast} or \code{rmd_tibble}.}
@@ -12,6 +12,9 @@ rmd_select(x, ...)
 \item{...}{One or more unquoted expressions separated by commas. Chunk labels can be used
 as if they were positions in the data frame, so expressions like x:y can be used to
 select a range of nodes.}
+
+\item{keep_yaml}{Logical, whether to automatically include YAML nodes in the selection.
+If \code{TRUE} (default), equivalent to including \code{has_type("rmd_yaml")} in the selection.}
 }
 \value{
 Returns a subset Rmd object (either \code{rmd_ast} or \code{rmd_tibble} depending on input).
@@ -20,11 +23,11 @@ Returns a subset Rmd object (either \code{rmd_ast} or \code{rmd_tibble} dependin
 This function is implemented using \code{\link[tidyselect:eval_select]{tidyselect::eval_select()}} which enables
 a variety of useful syntax for selecting nodes from the ast.
 
-Additionally, a number of additional \code{parsermd} specific selection helpers are available:
+Additionally, a number of \code{parsermd} helpers are available:
 \code{\link[=by_section]{by_section()}}, \code{\link[=has_type]{has_type()}}, \code{\link[=has_label]{has_label()}}, and \code{\link[=has_option]{has_option()}}.
 }
 \examples{
-rmd = parse_rmd(system.file("hw01.Rmd", package = "parsermd"))
+rmd = parse_rmd(system.file("examples/hw01.Rmd", package = "parsermd"))
 
 rmd_select(rmd, "plot-dino", "cor-dino")
 rmd_select(rmd, "plot-dino":"cor-dino")
@@ -34,4 +37,7 @@ rmd_select(rmd, has_type("rmd_chunk"))
 
 rmd_select(rmd, by_section(c("Exercise *", "Solution")))
 
+}
+\seealso{
+\link{rmd_select_helpers} for helper functions to use with \code{rmd_select()}, including \code{\link[=by_section]{by_section()}}, \code{\link[=has_type]{has_type()}}, \code{\link[=has_label]{has_label()}}, and \code{\link[=has_option]{has_option()}}.
 }

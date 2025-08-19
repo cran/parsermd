@@ -1,12 +1,12 @@
 test_that("Basic hierarchy", {
-  ast = create_ast(
-    create_heading("H1", 1),
-    create_heading("H2", 2),
-    create_heading("H3", 3),
-    create_heading("H4", 4),
-    create_heading("H5", 5),
-    create_heading("H6", 6)
-  )
+  ast = rmd_ast( list(
+    rmd_heading("H1", 1L),
+    rmd_heading("H2", 2L),
+    rmd_heading("H3", 3L),
+    rmd_heading("H4", 4L),
+    rmd_heading("H5", 5L),
+    rmd_heading("H6", 6L)
+  ) )
 
   expect_sec = list(
     c(sec_h1 = "H1", sec_h2 = NA,   sec_h3 = NA,   sec_h4 = NA,   sec_h5 = NA,   sec_h6 = NA),
@@ -40,11 +40,11 @@ test_that("Basic hierarchy", {
 })
 
 test_that("Inverted hierarchy", {
-  ast = create_ast(
-    create_heading("H4", 4),
-    create_heading("H3", 3),
-    create_heading("H2", 2)
-  )
+  ast = rmd_ast( list(
+    rmd_heading("H4", 4L),
+    rmd_heading("H3", 3L),
+    rmd_heading("H2", 2L)
+  ) )
 
   expect_sec = list(
     c(sec_h2 = NA,   sec_h3 = NA,   sec_h4 = "H4"),
@@ -56,7 +56,7 @@ test_that("Inverted hierarchy", {
 })
 
 test_that("Test hw01.Rmd", {
-  rmd = parse_rmd(system.file("hw01.Rmd", package = "parsermd"))
+  rmd = parse_rmd(system.file("examples/hw01.Rmd", package = "parsermd"))
 
   expect_sec = list(
     c(sec_h3 = NA_character_,   sec_h4 = NA_character_),

@@ -15,7 +15,7 @@
 #' details of the document.
 #'
 #' @examples
-#' rmd = parse_rmd(system.file("hw01.Rmd", package="parsermd"))
+#' rmd = parse_rmd(system.file("examples/hw01.Rmd", package="parsermd"))
 #'
 #' rmd_select(rmd, by_section(c("Exercise *", "Solution"))) %>%
 #'   rmd_template()
@@ -55,7 +55,7 @@ rmd_template.rmd_tibble = function(rmd, keep_content = FALSE, keep_labels = TRUE
     rmd = dplyr::filter(rmd, .data[["type"]] != "rmd_heading")
 
   if (!keep_yaml)
-    rmd = dplyr::filter(rmd, !(.data[["type"]] %in% c("rmd_yaml","rmd_yaml_list")))
+    rmd = dplyr::filter(rmd, !(.data[["type"]] %in% c("rmd_yaml")))
 
 
   rmd = dplyr::select(rmd, -tidyselect::all_of("ast"))

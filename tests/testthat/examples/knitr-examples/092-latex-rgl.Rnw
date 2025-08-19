@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{url}
+\begin{document}
+
+A bug reported at \url{https://d.cosx.org/d/110742}.
+
+<<rgl-demo>>=
+library(knitr)
+library(rgl)
+knit_hooks$set(rgl = hook_rgl)
+head(hook_rgl)  # the hook function is defined as this
+@
+
+Then we only have to set the chunk option \texttt{rgl=TRUE}:
+
+<<fancy-rgl, rgl=TRUE, dev='png', out.width='3in', fig.align='center', fig.show='hold', warning=FALSE>>=
+library(rgl)
+plot3d(data.frame(x = rnorm(100), y = rnorm(100), z = rnorm(100)), col = rainbow(100))
+par3d(zoom=.8)
+@
+
+\end{document}
